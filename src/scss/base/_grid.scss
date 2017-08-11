@@ -1,0 +1,329 @@
+$container-padding: 32px;
+$grid-distance: 8px;
+
+$breakpoints: (
+  xs: 0,
+  sm: 768px,
+  md: 1024px,
+  lg: 1200px
+);
+
+@mixin col-base {
+  box-sizing: border-box;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding-right: $grid-distance;
+  padding-left: $grid-distance;
+}
+
+@mixin col-fluid {
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+}
+
+@mixin col($colspan: 1) {
+  -ms-flex-preferred-size: (100% * $colspan) / 12;
+  flex-basis: (100% * $colspan) / 12;
+  max-width: (100% * $colspan) / 12;
+}
+
+@mixin offset($cols: 0) {
+  margin-left: (100% * $cols) / 12;
+}
+
+@mixin flex-start {
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  text-align: start;
+}
+
+@mixin flex-center {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-align: center;
+}
+
+@mixin flex-end {
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  text-align: end;
+}
+
+@mixin flex-top {
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+
+@mixin flex-middle {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+@mixin flex-bottom {
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+}
+
+@mixin flex-around {
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+}
+
+@mixin flex-between {
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+@mixin flex-first {
+  -webkit-box-ordinal-group: 0;
+  -ms-flex-order: -1;
+  order: -1;
+}
+
+@mixin flex-last {
+  -webkit-box-ordinal-group: 2;
+  -ms-flex-order: 1;
+  order: 1;
+}
+
+@mixin do-breakpoint($value) {
+  @if $value > 0 {
+    @media only screen and (min-width: $value) {
+      .container {
+        width: $value;
+      }
+      @content;
+    }
+  }
+  @if $value == 0 {
+    @content;
+  }
+}
+
+.container-fluid,
+.container {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.container-fluid {
+  padding-right: $container-padding;
+  padding-left: $container-padding;
+}
+
+.row {
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -$grid-distance;
+  margin-left: -$grid-distance;
+}
+
+.row.reverse {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+}
+
+.col.reverse {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+  -ms-flex-direction: column-reverse;
+  flex-direction: column-reverse;
+}
+
+@each $breakpoint-key, $breakpoint-value in $breakpoints {
+  @include do-breakpoint($breakpoint-value) {
+    .col-#{$breakpoint-key},
+    .col-#{$breakpoint-key}-1,
+    .col-#{$breakpoint-key}-2,
+    .col-#{$breakpoint-key}-3,
+    .col-#{$breakpoint-key}-4,
+    .col-#{$breakpoint-key}-5,
+    .col-#{$breakpoint-key}-6,
+    .col-#{$breakpoint-key}-7,
+    .col-#{$breakpoint-key}-8,
+    .col-#{$breakpoint-key}-9,
+    .col-#{$breakpoint-key}-10,
+    .col-#{$breakpoint-key}-11,
+    .col-#{$breakpoint-key}-12,
+    .col-#{$breakpoint-key}-offset-0,
+    .col-#{$breakpoint-key}-offset-1,
+    .col-#{$breakpoint-key}-offset-2,
+    .col-#{$breakpoint-key}-offset-3,
+    .col-#{$breakpoint-key}-offset-4,
+    .col-#{$breakpoint-key}-offset-5,
+    .col-#{$breakpoint-key}-offset-6,
+    .col-#{$breakpoint-key}-offset-7,
+    .col-#{$breakpoint-key}-offset-8,
+    .col-#{$breakpoint-key}-offset-9,
+    .col-#{$breakpoint-key}-offset-10,
+    .col-#{$breakpoint-key}-offset-11,
+    .col-#{$breakpoint-key}-offset-12 {
+      @include col-base;
+    }
+
+    .col-#{$breakpoint-key} {
+      @include col-fluid;
+    }
+
+    .col-#{$breakpoint-key}-1 {
+      @include col(1);
+    }
+
+    .col-#{$breakpoint-key}-2 {
+      @include col(2);
+    }
+
+    .col-#{$breakpoint-key}-3 {
+      @include col(3);
+    }
+
+    .col-#{$breakpoint-key}-4 {
+      @include col(4);
+    }
+
+    .col-#{$breakpoint-key}-5 {
+      @include col(5);
+    }
+
+    .col-#{$breakpoint-key}-6 {
+      @include col(6);
+    }
+
+    .col-#{$breakpoint-key}-7 {
+      @include col(7);
+    }
+
+    .col-#{$breakpoint-key}-8 {
+      @include col(8);
+    }
+
+    .col-#{$breakpoint-key}-9 {
+      @include col(9);
+    }
+
+    .col-#{$breakpoint-key}-10 {
+      @include col(10);
+    }
+
+    .col-#{$breakpoint-key}-11 {
+      @include col(11);
+    }
+
+    .col-#{$breakpoint-key}-12 {
+      @include col(12);
+    }
+
+    .col-#{$breakpoint-key}-offset-0 {
+      @include offset(0);
+    }
+
+    .col-#{$breakpoint-key}-offset-1 {
+      @include offset(1);
+    }
+
+    .col-#{$breakpoint-key}-offset-2 {
+      @include offset(2);
+    }
+
+    .col-#{$breakpoint-key}-offset-3 {
+      @include offset(3);
+    }
+
+    .col-#{$breakpoint-key}-offset-4 {
+      @include offset(4);
+    }
+
+    .col-#{$breakpoint-key}-offset-5 {
+      @include offset(5);
+    }
+
+    .col-#{$breakpoint-key}-offset-6 {
+      @include offset(6);
+    }
+
+    .col-#{$breakpoint-key}-offset-7 {
+      @include offset(7);
+    }
+
+    .col-#{$breakpoint-key}-offset-8 {
+      @include offset(8);
+    }
+
+    .col-#{$breakpoint-key}-offset-9 {
+      @include offset(9);
+    }
+
+    .col-#{$breakpoint-key}-offset-10 {
+      @include offset(10);
+    }
+
+    .col-#{$breakpoint-key}-offset-11 {
+      @include offset(11);
+    }
+
+    .start-#{$breakpoint-key} {
+      @include flex-start;
+    }
+
+    .center-#{$breakpoint-key} {
+      @include flex-center;
+    }
+
+    .end-#{$breakpoint-key} {
+      @include flex-end;
+    }
+
+    .top-#{$breakpoint-key} {
+      @include flex-top;
+    }
+
+    .middle-#{$breakpoint-key} {
+      @include flex-middle;
+    }
+
+    .bottom-#{$breakpoint-key} {
+      @include flex-bottom;
+    }
+
+    .around-#{$breakpoint-key} {
+      @include flex-around;
+    }
+
+    .between-#{$breakpoint-key} {
+      @include flex-between;
+    }
+
+    .first-#{$breakpoint-key} {
+      @include flex-first;
+    }
+
+    .last-#{$breakpoint-key} {
+      @include flex-last;
+    }
+  }
+}

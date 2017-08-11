@@ -1,0 +1,25 @@
+grow_version: ">=0.0.55"
+title@: Webpack with Grow boilerplate
+description@: "This repo tries to show a way to work with grow and webpack on a clean/module based way."
+
+localization:
+  default_locale: en
+  locales:
+  - es
+  - en
+
+static_dirs:
+- static_dir: /dist/js/
+  serve_at: /static/js/
+- static_dir: /dist/css/
+  serve_at: /static/css/
+- static_dir: /src/assets/
+  serve_at: /static/assets/
+
+deployments:
+  default:
+    destination: local
+    out_dir: fiber-grow-launch/
+  sandbox:
+    destination: gcs
+    bucket: sandbox.growlaunches.com

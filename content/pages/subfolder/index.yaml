@@ -1,0 +1,30 @@
+$path: /subfolder/
+$view: /views/pages/index.html
+$title: Welcome
+$titles:
+  nav: Home
+$order: 0
+$localization:
+  path: /{locale}/subfolder/
+
+page_name: subfolder/index
+page_modules:
+  - module_name: hero
+    kicker: Text for the kicker
+    title: Page Title
+    description: This is an example for the description of the main hero
+    background_image: http://io
+  - module_name: section1
+    image_boxes:
+    - image_url: http://io
+      kicker: Item 1
+      title: Title item 1
+      description: Description for item 1
+    - image_url: http://io
+      kicker: Item 2
+      title: Title item 2
+      description: Description for item 2
+    - image_url: http://io
+      kicker: Item 2
+      title: Title item 2
+      description: Description for item 2

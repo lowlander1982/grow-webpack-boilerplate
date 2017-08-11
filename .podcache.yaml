@@ -1,0 +1,6 @@
+dependencies:
+  /content/pages/index.md:
+  - /dist/css/style.css
+  - /dist/js/bundle.js
+  - /src/assets/favicon.ico
+objects: {}

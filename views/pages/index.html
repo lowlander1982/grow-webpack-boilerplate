@@ -1,0 +1,20 @@
+{% extends "/views/base.html" %}
+{% import "/views/modules/hero/hero.html" as hero %}
+
+{% block main %}
+  {% for module in doc.page_modules %}
+    {% if module.module_name == "hero" %}
+      {{ hero.content(_(module.kicker), _(module.title), _(module.description), _(module.background_image)) }}
+    {% elif module.module_name == "section1" %}
+      section1 aca
+    {% endif %}
+  {% endfor %}
+{% endblock %}
+
+{% block styles %}
+  <link rel="stylesheet" href="{{g.static('/dist/css/' + doc.page_name + '.css').url.path}}?id={{ range(1000000, 9999999) | random }}">
+{% endblock %}
+
+{% block scripts %}
+  <script src="{{g.static('/dist/js/' + doc.page_name + '.js').url.path}}?id={{ range(1000000, 9999999) | random }}" async></script>
+{% endblock %}

@@ -1,0 +1,22 @@
+.hero {
+  background-color: grey;
+
+  .row {
+    height: 300px;
+  }
+
+  h3 {
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    font-size: 45px;
+    text-transform: uppercase;
+    padding-bottom: 20px;
+  }
+
+  p {
+    font-style: italic;
+  }
+}

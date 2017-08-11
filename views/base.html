@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="{{doc.locale}}">
+  <head>
+    <meta charset="utf-8">
+    <title>{{_(doc.title)}} - {{_(podspec.title)}}</title>
+    <meta name="description" value="{{_(podspec.description)}}">
+    <link rel="icon" href="{{g.static('/src/assets/favicon.ico').url.path}}" type="image/x-icon" />
+    {% block styles %}{% endblock %}
+  </head>
+  <body>
+    {% block main %}{% endblock %}
+    {% block scripts %}{% endblock %}
+  </body>
+</html>
